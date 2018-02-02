@@ -1,4 +1,4 @@
-// Change vertical scroll to horizontal scroll
+/*// Change vertical scroll to horizontal scroll
 
 function horizontalScroll(event) {
 
@@ -35,7 +35,9 @@ function horizontalScroll(event) {
 // });
 
 
+
 // function noShakeScroll(e) {
 // 	this.scrollBy(0,e.deltaY);
 // 	e.preventDefault();
 // }
+*/

@@ -1,8 +1,11 @@
+//@ts-check
+'use strict';
+
 // Animates each work preview element when scrolled into view
 
 var workPreviews = document.querySelectorAll('.work-preview')
 
-document.addEventListener('scroll', function(event) {
+document.addEventListener('scroll', function (event) {
 
 	for (var i = 0; i < workPreviews.length; i++) {
 
@@ -30,7 +33,7 @@ document.addEventListener('scroll', function(event) {
 // Sets up AJAX & adds click event to each work preview element
 var workID = document.querySelectorAll('*[id]')
 
-for (i = 0; i < workID.length; i++) {
+for (let i = 0; i < workID.length; i++) {
 
 	var thisWorkID = workID[i]
 
@@ -38,7 +41,7 @@ for (i = 0; i < workID.length; i++) {
 	var workPreviewBoundingLeft = thisWorkID.getBoundingClientRect().left
 	var workPreviewBoundingRight = thisWorkID.getBoundingClientRect().right
 
-	thisWorkID.addEventListener('mousedown', function(event) {
+	thisWorkID.addEventListener('mousedown', function (event) {
 
 		// 1. If an element is clicked and not zoomed in (see script above),
 		//    center the clicked element
@@ -72,7 +75,7 @@ for (i = 0; i < workID.length; i++) {
 		var workHTML = this.getAttribute('id')
 
 		xhr.open("GET", workHTML + '.html', true)
-		xhr.onload = function(e) {
+		xhr.onload = function (e) {
 			if (xhr.readyState === 4) {
 				if (xhr.status === 200) {
 
@@ -108,7 +111,7 @@ for (i = 0; i < workID.length; i++) {
 						//
 						// }, 100)
 
-						//console.log(xhr.statusText);
+						//console.log(xhr.statusText)
 
 					}
 
@@ -118,77 +121,76 @@ for (i = 0; i < workID.length; i++) {
 			}
 		}
 
-		setTimeout(function() {
+		setTimeout(function () {
 
 			xhr.open('GET', workHTML + '.html', true)
 			xhr.send()
 
 		}, 100)
 
-		xhr.onerror = function(e) {
+		xhr.onerror = function (e) {
 			console.error(xhr.statusText)
 		};
-
-
-		/* if (this.style.opacity == 1) {
-
-			window.scrollTo({
-				behavior: 'smooth',
-				left: scrollPos
-			})
-
-		} else if (this.style.opacity == 0.2) {
-
-			// var workHTML = this.getAttribute('id')
-			//
-			// setTimeout(function(){
-			//
-			// 	xhr.open('GET', workHTML + '.html', true)
-			// 	xhr.send()
-			//
-			// }, 100)
-
-			//console.log(xhr.statusText);
-
-		} */
 
 	})
 
 }
 
 
+var workID = document.querySelectorAll('*[id]')
 
+const SCROLL_DELAY = 2000;
+var blockTimeStamp = 0;
 
+function scrollProject(dir) {
 
+	if ((Date.now() - blockTimeStamp) > SCROLL_DELAY) {
 
-window.addEventListener('mousewheel', function(e){
+		console.log('scroll', dir);
+		for (let i = 0; i < workID.length; i++) {
 
-	if (wDelta = e.wheelDelta < 0) {
-		console.log('Right');
-	} else {
-		console.log('Left');
+			var thisWorkID = workID[i]
+
+			console.log(thisWorkID)
+
+			/*
+
+			var triggerAnchorPoint = window.innerWidth / 3.8
+			var workPreviewBoundingLeft = thisWorkID.getBoundingClientRect().left
+			var workPreviewBoundingRight = thisWorkID.getBoundingClientRect().right
+
+			var halfPreviewWidth = this.offsetWidth / 2
+			var previewOffset = this.getBoundingClientRect().left
+			var scrollPos = window.scrollX + halfPreviewWidth + (previewOffset - (window.innerWidth / 2))
+
+			window.scrollTo({behavior: 'smooth', left: scrollPos})
+
+			*/
+		}
+
+		blockTimeStamp = Date.now()
 	}
-
-})
-
+}
 
 
-////////////////////////////////////////////////////////////////
 
-document.querySelector('a').addEventListener('mouseover', function() {
 
-	console.log(this);
 
-	this.classList.add('hover-cursor')
+/*
+window.addEventListener('mousewheel', function (e) {
 
-	// Velocity(this, {
-	// 	this.classList.add('hover-cursor')
-	// }, {
-	// 	duration: 500
-	// })
-	// this.style.cursor = "url('../img/green_cursor-hover.png')"
+	e.preventDefault();
 
-})
+	if (e.wheelDelta < 0) {
+
+		scrollProject('right');
+	} else {
+
+		scrollProject('left');
+	}
+}) */
+
+
 
 
 //////////////////////////////////////////////////////////////////////
@@ -385,57 +387,4 @@ Velocity(articleSection, {
 }, {
 	display: 'flex',
 	duration: 0,
-})
-
-
-
-//////////////////////////////////////////////////////////////////////
-
-/* PROJECTS JS */
-
-//////////////////////////////////////////////////////////////////////
-
-window.addEventListener('load', function() {
-
-	var theEls = document.querySelectorAll('.animate-container')
-	var scrollTimeline = []
-
-	// Now we loop through the elements and add each one to the timeline along with its scroll position
-	for (i = 0; i < theEls.length; i++) {
-
-		var thisEl = theEls[i]
-
-		scrollTimeline.push({
-			el: thisEl,
-			top: thisEl.getBoundingClientRect().top - window.innerHeight / 2.5
-		})
-
-	}
-
-	// Function which iterates as user scrolls
-	function toggleWidth() {
-
-		for (i = 0; i < scrollTimeline.length; i++) {
-
-			var thisEvent = scrollTimeline[i]
-
-			if (checkHeight(thisEvent)) {
-
-				Velocity(theEls[i], {
-					width: 0
-				}, {
-					duration: 1000,
-					easing: [0.0, 0.0, 0.2, 1]
-				})
-
-			}
-		}
-	}
-
-	function checkHeight(ev) {
-		return document.documentElement.scrollTop > ev.top
-	}
-
-	window.addEventListener('scroll', toggleWidth)
-
 })
