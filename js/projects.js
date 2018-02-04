@@ -1,8 +1,3 @@
-//////////////////////////////////////////////////////////////////////
-
-/* PROJECTS JS */
-
-//////////////////////////////////////////////////////////////////////
 
 window.addEventListener('load', function () {
 
@@ -31,6 +26,7 @@ window.addEventListener('load', function () {
 			if (checkHeight(thisEvent)) {
 
 				Velocity(theEls[i], {
+					// transform: translateX
 					width: 0
 				}, {
 					duration: 1000,

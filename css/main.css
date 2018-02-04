@@ -10,8 +10,17 @@ body, html {
     background-color: #080809;
     font-family: 'Raleway', sans-serif;
     color: #12BB98;
-    overflow: hidden;
+    overflow-y: hidden;
     /* cursor: url('../img/green_cursor.png') 15 15, auto; */
+}
+
+.intersect-area {
+    position: fixed;
+    left: 30%;
+    top: 25%;
+    width: 40%;
+    height: 50%;
+    background-color: red;
 }
 
 .background-title {
@@ -177,7 +186,7 @@ article {
     width: auto;
     height: 100vh;
     padding-right: 200px;
-    opacity: 0;
+    opacity: 1;
 }
 
 .work-preview {
@@ -191,15 +200,13 @@ article {
     background-color: #030304;
     background-position: center;
     background-size: cover;
+    opacity: .1;
     z-index: 5;
     transition: all .8s cubic-bezier(0.0, 0.0, 0.2, 1);
 }
 
-.norske-folkeeventyr-preview {
-    /* width: 100%;
-    height: 100%; */
-    background: url('../img/nf-preview-img.png') no-repeat;
-    background-size: contain
+#norske-folkeeventyr {
+    background: url('../img/nf/nf-preview.png');
 }
 
 .fullPage {
