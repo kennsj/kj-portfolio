@@ -43,12 +43,12 @@ document.addEventListener('scroll', function(event) {
 		if ((workPreviewRect.left > triggerAnchorPoint) && (workPreviewRect.right < (window.innerWidth - triggerAnchorPoint))) {
 
 			thisWork.classList.add('focus')
-			thisWork.classList.remove('inactive')
+			// thisWork.classList.remove('inactive')
 
 		} else {
 
 			thisWork.classList.remove('focus')
-			thisWork.classList.add('inactive')
+			// thisWork.classList.add('inactive')
 
 		}
 	}

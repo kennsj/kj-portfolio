@@ -16,7 +16,7 @@ article {
     top: 65vh;
     left: 0;
     display: block !important;
-    width: 100vw;
+    width: 100%;
     padding: 100px 0;
 }
 
