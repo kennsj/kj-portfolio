@@ -16,11 +16,10 @@ body, html {
 
 .intersect-area {
     position: fixed;
-    left: 30%;
-    top: 25%;
-    width: 40%;
-    height: 50%;
-    background-color: red;
+    left: 35%;
+    top: 10%;
+    width: 30%;
+    height: 80%;
 }
 
 .background-title {
@@ -187,6 +186,7 @@ article {
     height: 100vh;
     padding-right: 200px;
     opacity: 1;
+    transition: all .8s cubic-bezier(0.0, 0.0, 0.2, 1);
 }
 
 .work-preview {
@@ -208,11 +208,13 @@ article {
 #norske-folkeeventyr {
     background: url('../img/nf/nf-preview.png');
 }
+.focus {
+    background-color: black;
+    transform: scale(1.2);
+    transition: all .8s cubic-bezier(0.0, 0.0, 0.2, 1);
+}
 
-.fullPage {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
+.inactive {
+    background: #040405 !important;
+    transition: all .8s cubic-bezier(0.0, 0.0, 0.2, 1);
 }

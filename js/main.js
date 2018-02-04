@@ -3,15 +3,21 @@
 
 // Animates each work preview element when scrolled into view
 
-var workPreviews = document.querySelectorAll('.work-preview')
-var workID = document.querySelectorAll('*[id]')
 var intersectEl = document.querySelector('.intersect-area')
 var intersectRect = intersectEl.getBoundingClientRect()
+var workPreviews = document.querySelectorAll('.work-preview')
+var workID = document.querySelectorAll('*[id]')
 var centeredDiv = false
-
 
 // Scroll event for work previews
 document.addEventListener('scroll', function(event) {
+
+	if (window.scrollX > window.innerWidth / 2) {
+
+
+
+	}
+
 
 	window.onscroll = function(e) {
 		// print "false" if direction is down and "true" if up
@@ -29,36 +35,22 @@ document.addEventListener('scroll', function(event) {
 
 		var thisWork = workPreviews[i]
 
-		var thisWorkRect = thisWork.getBoundingClientRect()
-		// console.log(thisWorkRect.left + ' ' + thisWorkRect.right);
-		// console.log(intersectRect.left + ' ' + intersectRect.right);
-
-		// console.log(thisWorkRect);
-
-		if (thisWorkRect.left < intersectRect.right && thisWorkRect.right > intersectRect.left) {
-			console.log('hi');
-		} else {
-			console.log('nope')
-		}
-
-		var triggerAnchorPoint = window.innerWidth / 3.8
-		var workPreviewBoundingLeft = thisWork.getBoundingClientRect().left
-		var workPreviewBoundingRight = thisWork.getBoundingClientRect().right
+		var triggerAnchorPoint = window.innerWidth / 5
+		var workPreviewRect = thisWork.getBoundingClientRect()
 
 		// Animate work preview when in view and animate out when out of view
-		// if ((workPreviewBoundingLeft > triggerAnchorPoint) && (workPreviewBoundingRight < (window.innerWidth - triggerAnchorPoint))) {
-		//
-		// 	thisWork.style.transform = 'scale(1.4)'
-		// 	centeredDiv = true
-		// 	// console.log(centeredDiv);
-		//
-		// } else {
-		//
-		// 	thisWork.style.transform = 'scale(1)'
-		// 	centeredDiv = false
-		//
-		// }
 
+		if ((workPreviewRect.left > triggerAnchorPoint) && (workPreviewRect.right < (window.innerWidth - triggerAnchorPoint))) {
+
+			thisWork.classList.add('focus')
+			thisWork.classList.remove('inactive')
+
+		} else {
+
+			thisWork.classList.remove('focus')
+			thisWork.classList.add('inactive')
+
+		}
 	}
 })
 
@@ -86,42 +78,29 @@ for (let i = 0; i < workID.length; i++) {
 			left: scrollPos
 		})
 
+		if (thisWorkID.classList.contains('focus')) {
+			console.log('hi');
+		}
+
+		// window.location = workHTML + '.html'
 
 		// Sets up XMLHttp request
 
 		var xhr = new XMLHttpRequest()
-		// var workHTML = this.getAttribute('id')
+		var workHTML = this.getAttribute('id')
 
 		xhr.onreadystatechange = function() {
 
 			if (this.readyState == 4 && this.status == 200) {
 
-				// console.log(open);
-				console.log(this);
-				// console.log(centeredDiv)
-
-				// window.location = workHTML + '.html'
-
-				//
 				// xhr.open('GET', workHTML + '.html', true);
-				// xhr.send();
+				// xhr.send()
 
 			}
-
 		}
 
 		xhr.open('GET', 'unoccupied.html', true);
 		xhr.send();
-
-		/*
-
-		if (centeredDiv === true) {
-			scroll()
-		} else if (centeredDiv === false) {
-			disableScroll()
-		}
-
-		*/
 
 		// xhr.onload = function(e) {
 		//
@@ -178,44 +157,42 @@ for (let i = 0; i < workID.length; i++) {
 		// }
 
 	})
-
 }
 
 
-// var workID = document.querySelectorAll('*[id]')
-//
-// const SCROLL_DELAY = 2000;
-// var blockTimeStamp = 0;
-//
-// function scrollProject(dir) {
-//
-// 	if ((Date.now() - blockTimeStamp) > SCROLL_DELAY) {
-//
-// 		console.log('scroll', dir);
-// 		for (let i = 0; i < workID.length; i++) {
-//
-// 			var thisWorkID = workID[i]
-//
-// 			console.log(thisWorkID)
-//
-// 			/*
-//
-// 			var triggerAnchorPoint = window.innerWidth / 3.8
-// 			var workPreviewBoundingLeft = thisWorkID.getBoundingClientRect().left
-// 			var workPreviewBoundingRight = thisWorkID.getBoundingClientRect().right
-//
-// 			var halfPreviewWidth = this.offsetWidth / 2
-// 			var previewOffset = this.getBoundingClientRect().left
-// 			var scrollPos = window.scrollX + halfPreviewWidth + (previewOffset - (window.innerWidth / 2))
-//
-// 			window.scrollTo({behavior: 'smooth', left: scrollPos})
-//
-// 			*/
-// 		}
-//
-// 		blockTimeStamp = Date.now()
-// 	}
-// }
+const SCROLL_DELAY = 2000;
+var blockTimeStamp = 0;
+
+function scrollProject(dir) {
+
+	if ((Date.now() - blockTimeStamp) > SCROLL_DELAY) {
+
+		console.log('scroll', dir);
+		for (let i = 0; i < workID.length; i++) {
+
+			var thisWorkID = workID[i]
+
+			console.log(thisWorkID)
+
+
+			/*
+			var triggerAnchorPoint = window.innerWidth / 3.8
+			var workPreviewBoundingLeft = thisWorkID.getBoundingClientRect().left
+			var workPreviewBoundingRight = thisWorkID.getBoundingClientRect().right
+
+			var halfPreviewWidth = this.offsetWidth / 2
+			var previewOffset = this.getBoundingClientRect().left
+			var scrollPos = window.scrollX + halfPreviewWidth + (previewOffset - (window.innerWidth / 2))
+
+			window.scrollTo({behavior: 'smooth', left: scrollPos})
+			*/
+
+
+		}
+
+		blockTimeStamp = Date.now()
+	}
+}
 
 
 
