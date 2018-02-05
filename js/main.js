@@ -341,6 +341,15 @@ Velocity(articleSection, {
 	delay: 4000
 })
 
+var bgTitle = document.querySelector('.background-title')
+
+Velocity(bgTitle, {
+	opacity: .3
+}, {
+	duration: 1200,
+	delay: 4000
+})
+
 
 
 

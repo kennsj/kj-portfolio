@@ -12,7 +12,7 @@ html {
     font-family: 'Raleway', sans-serif;
     color: #12BB98;
     overflow-y: hidden;
-    /* cursor: url('../img/green_cursor.png') 15 15, auto; */
+    cursor: url('../img/green_cursor.png') 15 15, auto;
 }
 
 .intersect-area {
@@ -31,7 +31,7 @@ html {
     color: #050505;
     font-weight: 900;
     font-size: 30vw;
-    opacity: .3;
+    opacity: .0;
     -moz-user-select: none;
     -webkit-user-select: none;
     -ms-user-select: none;
