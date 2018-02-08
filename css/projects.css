@@ -20,6 +20,10 @@ article {
     padding: 100px 0;
 }
 
+.background-title {
+    left: 4vw;
+}
+
 .header-work-logo {
     display: block;
     max-width: 20vw;

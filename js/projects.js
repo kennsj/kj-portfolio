@@ -1,3 +1,5 @@
+//@ts-check
+'use strict';
 
 window.addEventListener('load', function () {
 
@@ -26,10 +28,10 @@ window.addEventListener('load', function () {
 			if (checkHeight(thisEvent)) {
 
 				Velocity(theEls[i], {
-					// transform: translateX
-					width: 0
+					translateX: '-50%',
+					scaleX: 0
 				}, {
-					duration: 1000,
+					duration: 1400,
 					easing: [0.0, 0.0, 0.2, 1]
 				})
 
@@ -43,4 +45,12 @@ window.addEventListener('load', function () {
 
 	window.addEventListener('scroll', toggleWidth)
 
+})
+
+var rellax = new Rellax('.background-title', {
+	speed: .5,
+	center: true,
+	round: true,
+	vertical: true,
+	horizontal: false
 })

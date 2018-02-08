@@ -1,6 +1,35 @@
 //@ts-check
 'use strict';
 
+window.sr = ScrollReveal({
+	reset: true
+});
+
+sr.reveal('.work-overlay', {
+	duration: 1200,
+	// easing: 'cubic-bezier(0.0, 0.0, 0.2, 1)',	
+	translate: '500px',
+	scale: 1,
+	viewFactor: 1.28,
+	opacity: 1,
+	distance: 0
+});
+
+var rellax = new Rellax('.background-title', {
+	speed: 2,
+	center: false,
+	round: true,
+	vertical: false,
+	horizontal: true
+})
+
+
+var logo = document.querySelector('.aurora-icon')
+
+logo.addEventListener('mousedown', function () {
+	window.location = '/index.html'
+})
+
 // Animates each work preview element when scrolled into view
 
 var intersectEl = document.querySelector('.intersect-area')
@@ -12,6 +41,8 @@ var buttons = document.querySelectorAll('button')
 
 var workID = document.querySelectorAll('*[id]')
 var centeredDiv = false
+
+
 
 // Scroll event for work previews
 document.addEventListener('scroll', function (event) {
@@ -26,67 +57,51 @@ document.addEventListener('scroll', function (event) {
 	window.onscroll = function (e) {
 		// print "false" if direction is down and "true" if up
 		if (this.oldScroll > this.scrollX) {
-			// console.log('Left');
+			console.log('Left');
 			// console.log(centeredDiv);
 		} else {
+			console.log('Right');
+
 			// console.log(centeredDiv);
 		}
 
 		this.oldScroll = this.scrollX;
 	}
 
-	for (var i = 0; i < workPreviews.length; i++) {
+	for (let i = 0; i < workPreviews.length; i++) {
 
 		var thisWork = workPreviews[i]
-
+		var thisworkRect = thisWork.getBoundingClientRect()
 		var triggerAnchorPoint = window.innerWidth / 5
-		var workPreviewRect = thisWork.getBoundingClientRect()
+		var thisOverlay = thisWork.children[4]
 
 		// Animate work preview when in view and animate out when out of view
+		if ((thisworkRect.left > triggerAnchorPoint) && (thisworkRect.right < (window.innerWidth - triggerAnchorPoint))) {
 
-		if ((workPreviewRect.left > triggerAnchorPoint) && (workPreviewRect.right < (window.innerWidth - triggerAnchorPoint))) {
 
-		
-			thisWork.classList.add('focus')
+			// Velocity(thisOverlay, {
+			// 	translateX: '-50%',
+			// 	scaleX: 0
+			// }, {
+			// 	duratoin: 800
+			// })
 
-			Velocity(workOverlay, {
-				width: 0
-			}, {
-				duration: 800
-			})
-
-			// workOverlay.classList.add('hide-overlay')
-			// workOverlay.classList.add('')
+			// thisWork.classList.add('work-focus')
+			// thisOverlay.classList.add('.hide-overlay')
 
 		} else {
 
-			thisWork.classList.remove('focus')
-			// workOverlay.classList.remove('hide-overlay')
-			// thisWork.classList.add('inactive')
+			// thisWork.classList.remove('work-focus')
+			// thisOverlay.classList.remove('.hide-overlay')
 
 		}
 	}
+
 })
 
 
-function workClick() {
-	
-	for (var i = 0; i < workPreviews.length; i++) {
 
-		var thisWork = workPreviews[i]
 
-		var triggerAnchorPoint = window.innerWidth / 5
-		var workPreviewRect = thisWork.getBoundingClientRect()
-
-		// Animate work preview when in view and animate out when out of view
-
-		thisWork[i].addEventListener('mousedown', function () {
-			console.log('hi');
-
-		})
-
-	}
-}
 
 
 // Click event for work previews
@@ -230,15 +245,15 @@ function scrollProject(dir) {
 }
 
 for (let i = 0; i < buttons.length; i++) {
-	
-	buttons[i].addEventListener('mousedown', function(){
-	
+
+	buttons[i].addEventListener('mousedown', function () {
+
 		window.location = this.parentElement.getAttribute('id') + '.html'
-		
+
 		// window.location = buttonHTML + '.html'
-		
+
 	})
-	
+
 }
 
 
@@ -254,108 +269,6 @@ for (let i = 0; i < buttons.length; i++) {
 
 
 
-var overlayDiv = document.querySelector('.text-overlay')
-
-Velocity(overlayDiv, {
-	left: 0,
-	width: '600px'
-}, {
-	duration: 300,
-	delay: 800,
-	easing: [0.0, 0.0, 0.2, 1]
-})
-
-Velocity(overlayDiv, {
-    right: 0,
-    width: 0,
-    translateX: 600
-}, {
-	duration: 300,
-	delay: 300,
-	easing: [0.0, 0.0, 0.2, 1]
-})
-
-Velocity(document.querySelector('.h1-name'), {
-	opacity: 1
-}, {
-	duration: 0,
-	delay: 1100,
-	easing: [0.0, 0.0, 0.2, 1]
-})
-
-Velocity(overlayDiv, {
-    left: '-600px',
-    width: '600px'
-}, {
-    duration: 300,
-    delay: 1100,
-	easing: [0.0, 0.0, 0.2, 1]
-})
-
-Velocity(document.querySelector('.h1-name'), {
-    opacity: 0
-}, {
-    delay: 1800,
-	easing: [0.0, 0.0, 0.2, 1]
-})
-
-Velocity(document.querySelector('.h1-title'), {
-    opacity: 1
-}, {
-    duration: 0,
-    delay: 3100,
-	easing: [0.0, 0.0, 0.2, 1]
-})
-
-Velocity(overlayDiv, {
-    width: 0
-}, {
-    duration: 300,
-    delay: 500,
-	easing: [0.0, 0.0, 0.2, 1]
-})
-
-var auroraIcon = document.querySelector('.aurora-icon')
-var hamburger = document.querySelector('.hamburger')
-var articleSection = document.querySelector('article')
-
-Velocity(auroraIcon, {
-	opacity: 1,
-}, {
-	duration: 800,
-	delay: 4000
-})
-
-Velocity(hamburger, {
-	opacity: 1,
-}, {
-	duration: 800,
-	delay: 4000
-})
-
-Velocity(articleSection, {
-	opacity: 1,
-}, {
-	display: 'flex',
-	duration: 800,
-	delay: 4000
-})
-
-var bgTitle = document.querySelector('.background-title')
-
-Velocity(bgTitle, {
-	opacity: .3
-}, {
-	duration: 1200,
-	delay: 4000
-})
-
-
-
-
-
-
-
 // var overlayDiv = document.querySelector('.text-overlay')
 
 // Velocity(overlayDiv, {
@@ -368,9 +281,9 @@ Velocity(bgTitle, {
 // })
 
 // Velocity(overlayDiv, {
-// 	right: 0,
-// 	width: 0,
-// 	translateX: 600
+//     right: 0,
+//     width: 0,
+//     translateX: 600
 // }, {
 // 	duration: 300,
 // 	delay: 300,
@@ -380,65 +293,146 @@ Velocity(bgTitle, {
 // Velocity(document.querySelector('.h1-name'), {
 // 	opacity: 1
 // }, {
-// 	duration: 300,
+// 	duration: 0,
 // 	delay: 1100,
 // 	easing: [0.0, 0.0, 0.2, 1]
 // })
 
 // Velocity(overlayDiv, {
-// 	left: '-600px',
-// 	width: '600px'
+//     left: '-600px',
+//     width: '600px'
 // }, {
-// 	duration: 300,
+//     duration: 300,
+//     delay: 1100,
 // 	easing: [0.0, 0.0, 0.2, 1]
 // })
 
 // Velocity(document.querySelector('.h1-name'), {
-// 	opacity: 0
+//     opacity: 0
 // }, {
+//     delay: 1800,
 // 	easing: [0.0, 0.0, 0.2, 1]
 // })
 
 // Velocity(document.querySelector('.h1-title'), {
-// 	opacity: 1
+//     opacity: 1
 // }, {
-// 	duration: 0,
+//     duration: 0,
+//     delay: 3100,
 // 	easing: [0.0, 0.0, 0.2, 1]
 // })
 
 // Velocity(overlayDiv, {
-// 	width: 0
+//     width: 0
 // }, {
-// 	duration: 300,
+//     duration: 300,
+//     delay: 500,
 // 	easing: [0.0, 0.0, 0.2, 1]
 // })
 
-// var about = document.querySelector('.about-link'),
-// 	auroraIcon = document.querySelector('.aurora-icon'),
-// 	hamburger = document.querySelector('.hamburger'),
-// 	articleSection = document.querySelector('article')
-
-// Velocity(about, {
-// 	opacity: 1,
-// }, {
-// 	duration: 800,
-// })
+// var auroraIcon = document.querySelector('.aurora-icon')
+// var hamburger = document.querySelector('.hamburger')
+// var articleSection = document.querySelector('article')
 
 // Velocity(auroraIcon, {
 // 	opacity: 1,
 // }, {
 // 	duration: 800,
+// 	delay: 4000
 // })
 
 // Velocity(hamburger, {
 // 	opacity: 1,
 // }, {
 // 	duration: 800,
+// 	delay: 4000
 // })
 
 // Velocity(articleSection, {
 // 	opacity: 1,
 // }, {
 // 	display: 'flex',
-// 	duration: 0,
+// 	duration: 800,
+// 	delay: 4000
 // })
+
+
+var overlayDiv = document.querySelector('.text-overlay')
+
+Velocity(overlayDiv, {
+	left: 0,
+	width: '600px'
+}, {
+	duration: 300,
+	delay: 800,
+	easing: [0.0, 0.0, 0.2, 1]
+})
+
+Velocity(overlayDiv, {
+	right: 0,
+	width: 0,
+	translateX: 600
+}, {
+	duration: 300,
+	delay: 300,
+	easing: [0.0, 0.0, 0.2, 1]
+})
+
+Velocity(document.querySelector('.h1-name'), {
+	opacity: 1
+}, {
+	duration: 300,
+	delay: 1100,
+	easing: [0.0, 0.0, 0.2, 1]
+})
+
+Velocity(overlayDiv, {
+	left: '-600px',
+	width: '600px'
+}, {
+	duration: 300,
+	easing: [0.0, 0.0, 0.2, 1]
+})
+
+Velocity(document.querySelector('.h1-name'), {
+	opacity: 0
+}, {
+	easing: [0.0, 0.0, 0.2, 1]
+})
+
+Velocity(document.querySelector('.h1-title'), {
+	opacity: 1
+}, {
+	duration: 0,
+	easing: [0.0, 0.0, 0.2, 1]
+})
+
+Velocity(overlayDiv, {
+	width: 0
+}, {
+	duration: 300,
+	easing: [0.0, 0.0, 0.2, 1]
+})
+
+var auroraIcon = document.querySelector('.aurora-icon'),
+	hamburger = document.querySelector('.hamburger'),
+	articleSection = document.querySelector('article')
+
+Velocity(auroraIcon, {
+	opacity: 1,
+}, {
+	duration: 800,
+})
+
+Velocity(hamburger, {
+	opacity: 1,
+}, {
+	duration: 800,
+})
+
+Velocity(articleSection, {
+	opacity: 1,
+}, {
+	display: 'flex',
+	duration: 0,
+})
