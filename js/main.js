@@ -269,95 +269,95 @@ for (let i = 0; i < buttons.length; i++) {
 
 
 
-// var overlayDiv = document.querySelector('.text-overlay')
+ var overlayDiv = document.querySelector('.text-overlay')
 
-// Velocity(overlayDiv, {
-// 	left: 0,
-// 	width: '600px'
-// }, {
-// 	duration: 300,
-// 	delay: 800,
-// 	easing: [0.0, 0.0, 0.2, 1]
-// })
+ Velocity(overlayDiv, {
+ 	left: 0,
+ 	width: '600px'
+ }, {
+ 	duration: 300,
+ 	delay: 800,
+ 	easing: [0.0, 0.0, 0.2, 1]
+ })
 
-// Velocity(overlayDiv, {
-//     right: 0,
-//     width: 0,
-//     translateX: 600
-// }, {
-// 	duration: 300,
-// 	delay: 300,
-// 	easing: [0.0, 0.0, 0.2, 1]
-// })
+ Velocity(overlayDiv, {
+     right: 0,
+     width: 0,
+     translateX: 600
+ }, {
+ 	duration: 300,
+ 	delay: 300,
+ 	easing: [0.0, 0.0, 0.2, 1]
+ })
 
-// Velocity(document.querySelector('.h1-name'), {
-// 	opacity: 1
-// }, {
-// 	duration: 0,
-// 	delay: 1100,
-// 	easing: [0.0, 0.0, 0.2, 1]
-// })
+ Velocity(document.querySelector('.h1-name'), {
+ 	opacity: 1
+ }, {
+ 	duration: 0,
+ 	delay: 1100,
+ 	easing: [0.0, 0.0, 0.2, 1]
+ })
 
-// Velocity(overlayDiv, {
-//     left: '-600px',
-//     width: '600px'
-// }, {
-//     duration: 300,
-//     delay: 1100,
-// 	easing: [0.0, 0.0, 0.2, 1]
-// })
+ Velocity(overlayDiv, {
+     left: '-600px',
+     width: '600px'
+ }, {
+     duration: 300,
+     delay: 1100,
+ 	easing: [0.0, 0.0, 0.2, 1]
+ })
 
-// Velocity(document.querySelector('.h1-name'), {
-//     opacity: 0
-// }, {
-//     delay: 1800,
-// 	easing: [0.0, 0.0, 0.2, 1]
-// })
+ Velocity(document.querySelector('.h1-name'), {
+     opacity: 0
+ }, {
+     delay: 1800,
+ 	easing: [0.0, 0.0, 0.2, 1]
+ })
 
-// Velocity(document.querySelector('.h1-title'), {
-//     opacity: 1
-// }, {
-//     duration: 0,
-//     delay: 3100,
-// 	easing: [0.0, 0.0, 0.2, 1]
-// })
+ Velocity(document.querySelector('.h1-title'), {
+     opacity: 1
+ }, {
+     duration: 0,
+     delay: 3100,
+ 	easing: [0.0, 0.0, 0.2, 1]
+ })
 
-// Velocity(overlayDiv, {
-//     width: 0
-// }, {
-//     duration: 300,
-//     delay: 500,
-// 	easing: [0.0, 0.0, 0.2, 1]
-// })
+ Velocity(overlayDiv, {
+     width: 0
+ }, {
+     duration: 300,
+     delay: 500,
+ 	easing: [0.0, 0.0, 0.2, 1]
+ })
 
-// var auroraIcon = document.querySelector('.aurora-icon')
-// var hamburger = document.querySelector('.hamburger')
-// var articleSection = document.querySelector('article')
+ var auroraIcon = document.querySelector('.aurora-icon')
+ var hamburger = document.querySelector('.hamburger')
+ var articleSection = document.querySelector('article')
 
-// Velocity(auroraIcon, {
-// 	opacity: 1,
-// }, {
-// 	duration: 800,
-// 	delay: 4000
-// })
+ Velocity(auroraIcon, {
+ 	opacity: 1,
+ }, {
+ 	duration: 800,
+ 	delay: 4000
+ })
 
-// Velocity(hamburger, {
-// 	opacity: 1,
-// }, {
-// 	duration: 800,
-// 	delay: 4000
-// })
+ Velocity(hamburger, {
+ 	opacity: 1,
+ }, {
+ 	duration: 800,
+ 	delay: 4000
+ })
 
-// Velocity(articleSection, {
-// 	opacity: 1,
-// }, {
-// 	display: 'flex',
-// 	duration: 800,
-// 	delay: 4000
-// })
+ Velocity(articleSection, {
+ 	opacity: 1,
+ }, {
+ 	display: 'flex',
+ 	duration: 800,
+ 	delay: 4000
+ })
 
 
-var overlayDiv = document.querySelector('.text-overlay')
+/*var overlayDiv = document.querySelector('.text-overlay')
 
 Velocity(overlayDiv, {
 	left: 0,
@@ -435,4 +435,4 @@ Velocity(articleSection, {
 }, {
 	display: 'flex',
 	duration: 0,
-})
+})*/
